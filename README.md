@@ -20,3 +20,6 @@ Sorting by 2nd column would yield;
 |   *7*    |   *6*    |   *5*    |
 |    8     |    9     |    4     |
 
+## Solution(s)
+### 1. Naive Solution
+A Naive solution was attempted which sorted the distinct elements of the selected column and re-created the matrix by stiching together slices of the matrix for each of the distinct elements by the sort order.
