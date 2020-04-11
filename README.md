@@ -22,4 +22,8 @@ Sorting by 2nd column would yield;
 
 ## Solution(s)
 ### 1. Naive Solution
-A Naive solution was attempted which sorted the distinct elements of the selected column and re-created the matrix by stiching together slices of the matrix for each of the distinct elements by the sort order.
+A Naive solution was attempted which:
+1. Sorted the distinct elements of the selected column
+2. Picked up slices of the matrix for each of the distinct elements sequentially according to sort order
+3. Kept appending the slices to re-create the matrix
+
