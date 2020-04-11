@@ -21,6 +21,12 @@ Sorting by 2nd column would yield;
 |    8     |    9     |    4     |
 
 ## Solution(s)
+### 0. Trivial Solution
+```
+def sort_matrix(matrix, column):
+    """Sort matrix (2D Numpy Array) by column (zero-base index integer)."""
+    return matrix[matrix[:,column].argsort()]
+```
 ### 1. Naive Solution
 #### Description
 A Naive solution was attempted which:
