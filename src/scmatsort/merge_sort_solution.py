@@ -75,3 +75,8 @@ def sequential_merge_sort(x, descending=False, key_func=lambda x: x):
 
     return pop_1
 
+def sort_matrix(matrix, column):
+    sort_result = sequential_merge_sort(matrix, key_func=lambda x: x[column])
+
+    return sort_result
+
