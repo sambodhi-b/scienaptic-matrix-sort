@@ -72,3 +72,8 @@ The implementation is currently set up as a sequential operation, however, can e
 The implementation should perform at `n log(n)` at the worst case.
 Memory footprint in the sequential implementation would be as large as the matrix. However a parallelized implementation is possible with memory footprint determined by `2 * row_size` where `row_size` is the size in memory of one row of the matrix.
 
+
+## Notes
+An installable distributable (wheel format) can be found at [ScMatSort-0.1-py3-none-any.whl](https://s3.ap-south-1.amazonaws.com/scmatsort.scienaptic.sambodhi/ScMatSort-0.1-py3-none-any.whl).
+This can be installed using `pip install <path to ScMatSort-0.1-py3-none-any.whl>`. It is recommended to only install this to a virtual environment.
+Output of the final test run can be found at [tests/scmatsort/TEST_RESULTS.md](tests/scmatsort/TEST_RESULTS.md)
