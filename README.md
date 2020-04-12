@@ -59,6 +59,16 @@ This implementation would be quite sub-optimal.
 A merge sort can be implemented for this use-case which can be particularly useful if the matrix can be too large to fit in memory:
 1. Split the matrix to records of rows
 2. Perform merge sort on records based on the value of the column
-Merge sort allows looking only at the head of a partition so can be implemented particularly well using iterables where the implementation can be independent of the logic.
+Merge sort allows looking only at the head of a partition so can be implemented particularly well using iterables where the low-level implementation details can be decoupled from the logic.
 
- 
+#### Implementation
+The 'Merge Sort with Custom Records' solution is available as `scmatsort.merge_sort_solution.sort_matrix(matrix, column)`.
+
+The **matrix** has to be an _iterable_ over _sequences_ (rows of columns) with the **column** extractable from a sub-sequence `s` by `s[column]`.
+The implementation is currently set up as a sequential operation, however, can easily be ported to a parallelized implementation as there is no coupling between the *Merge* operation and the *Split* operations apart from the parameter contract.
+
+*Sorting by multiple columns is not implemented, however, this is elementary as the sorting is stable and hence, can be chained.*
+
+The implementation should perform at `n log(n)` at the worst case.
+Memory footprint in the sequential implementation would be as large as the matrix. However a parallelized implementation is possible with memory footprint determined by `2 * row_size` where `row_size` is the size in memory of one row of the matrix.
+
