@@ -1,5 +1,6 @@
 from scmatsort.merge_sort_solution import (merge_sorted_sequences,
-                                           sequential_merge_sort)
+                                           sequential_merge_sort,
+                                           sort_matrix)
 
 
 class TestMergeSortedSequences:
@@ -62,69 +63,98 @@ class TestMergeSortedSequences:
             ) == expected_result)
 
 
-    class TestSequentialMergeSort:
 
-        def test_1d_array_1(self):
-            seq = [0,9,1,8,2,7,3,6,4,5]
-            expected_result = [0,1,2,3,4,5,6,7,8,9]
+class TestSequentialMergeSort:
 
-            assert(list(sequential_merge_sort(seq)) == expected_result)
+    def test_1d_array_1(self):
+        seq = [0,9,1,8,2,7,3,6,4,5]
+        expected_result = [0,1,2,3,4,5,6,7,8,9]
 
-        def test_1d_array_2(self):
-            seq = [0,9,1,8,2,7,3,6,4,5]
-            expected_result = [9,8,7,6,5,4,3,2,1,0]
+        assert(list(sequential_merge_sort(seq)) == expected_result)
 
-            assert(list(sequential_merge_sort(seq, descending=True)) == expected_result)
+    def test_1d_array_2(self):
+        seq = [0,9,1,8,2,7,3,6,4,5]
+        expected_result = [9,8,7,6,5,4,3,2,1,0]
 
-        def test_2d_array_1(self):
-            seq = [[1, 8],
-                   [0, 9],
-                   [4, 5],
-                   [2, 7],
-                   [3, 6]]
-            expected_result = [[0, 9],
-                               [1, 8],
-                               [2, 7],
-                               [3, 6],
-                               [4, 5]]
+        assert(list(sequential_merge_sort(seq, descending=True)) == expected_result)
 
-            assert(
-                list(
-                    sequential_merge_sort(seq,
-                                          key_func=lambda x: x[0])
-                ) == expected_result)
+    def test_2d_array_1(self):
+        seq = [[1, 8],
+               [0, 9],
+               [4, 5],
+               [2, 7],
+               [3, 6]]
+        expected_result = [[0, 9],
+                           [1, 8],
+                           [2, 7],
+                           [3, 6],
+                           [4, 5]]
 
-        def test_2d_array_2(self):
-            seq = [[1, 9],
-                   [0, 8],
-                   [4, 6],
-                   [2, 5],
-                   [3, 7]]
-            expected_result = [[2, 5],
-                               [4, 6],
-                               [3, 7],
-                               [0, 8],
-                               [1, 9]]
-            assert(
-                list(
-                    sequential_merge_sort(seq,
-                                          key_func=lambda x: x[1])
-                ) == expected_result)
+        assert(
+            list(
+                sequential_merge_sort(seq,
+                                      key_func=lambda x: x[0])
+            ) == expected_result)
 
-        def test_2d_array_3(self):
-            seq = [[1, 9],
-                   [0, 8],
-                   [4, 6],
-                   [2, 5],
-                   [3, 7]]
-            expected_result = [[1, 9],
-                               [0, 8],
-                               [3, 7],
-                               [4, 6],
-                               [2, 5]]
-            assert(
-                list(
-                    sequential_merge_sort(seq,
-                                          key_func=lambda x: x[1],
-                                          descending=True)
-                ) == expected_result)
+    def test_2d_array_2(self):
+        seq = [[1, 9],
+               [0, 8],
+               [4, 6],
+               [2, 5],
+               [3, 7]]
+        expected_result = [[2, 5],
+                           [4, 6],
+                           [3, 7],
+                           [0, 8],
+                           [1, 9]]
+        assert(
+            list(
+                sequential_merge_sort(seq,
+                                      key_func=lambda x: x[1])
+            ) == expected_result)
+
+    def test_2d_array_3(self):
+        seq = [[1, 9],
+               [0, 8],
+               [4, 6],
+               [2, 5],
+               [3, 7]]
+        expected_result = [[1, 9],
+                           [0, 8],
+                           [3, 7],
+                           [4, 6],
+                           [2, 5]]
+        assert(
+            list(
+                sequential_merge_sort(seq,
+                                      key_func=lambda x: x[1],
+                                      descending=True)
+            ) == expected_result)
+
+
+
+class TestSortMatrix:
+    mat = [[0, 100, 50],
+           [1, 99,  49],
+           [2, 98,  51],
+           [3, 97,  48]]
+
+    def test_matrix_1(self):
+        expected_result = [[3, 97,  48],
+                           [2, 98,  51],
+                           [1, 99,  49],
+                           [0, 100, 50]]
+        assert(
+            list(
+                sort_matrix(self.mat, 1)
+            ) == expected_result)
+
+    def test_matrix_2(self):
+        expected_result = [[3, 97,  48],
+                           [1, 99,  49],
+                           [0, 100, 50],
+                           [2, 98,  51]]
+        assert(
+            list(
+                sort_matrix(self.mat, 2)
+            ) == expected_result)
