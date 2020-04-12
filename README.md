@@ -25,8 +25,15 @@ Sorting by 2nd column would yield;
 ```
 def sort_matrix(matrix, column):
     """Sort matrix (2D Numpy Array) by column (zero-base index integer)."""
-    return matrix[matrix[:,column].argsort()]
+    return matrix[matrix[:,column].argsort(kind='mergesort')]
 ```
+#### Description
+This works by utilizing functionality available in numpy.
+The algorithm used is broadly as follows:
+1. Sort elements of Column and return original indices in order of sorted values.
+2. Address the original matrix with the index list.
+3. `kind='mergesort'` will ensure a stable (but more memory intensive) sort
+
 ### 1. Naive Solution
 #### Description
 A Naive solution was attempted which:
@@ -47,3 +54,11 @@ This implementation would be quite sub-optimal.
 - Order of complexity would be `n²` due to the slicing and stiching operation.
 - Memory footprint would get very high as the entire matrix will be hosted in memory and another copy built up.
 
+### 2. Merge Sort with Custom Records
+#### Description
+A merge sort can be implemented for this use-case which can be particularly useful if the matrix can be too large to fit in memory:
+1. Split the matrix to records of rows
+2. Perform merge sort on records based on the value of the column
+Merge sort allows looking only at the head of a partition so can be implemented particularly well using iterables where the implementation can be independent of the logic.
+
+ 
